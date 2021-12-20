@@ -3,6 +3,7 @@ import Section from './Сomponents/Section/Section';
 import Statistics from './Сomponents/Statistics/Statistics';
 import FeedbackOptions from './Сomponents/FeedbackOptions/FeedbackOptions';
 import Notification from './Сomponents/Notification/Notification';
+import s from './App.module.css';
 
 class App extends Component {
   state = {
@@ -35,14 +36,18 @@ class App extends Component {
     const stateName = Object.keys(this.state);
     const value = this.countTotalFeedback();
     const percent = this.countPositiveFeedbackPercentage();
+
+    console.log(value);
+
     return (
-      <div>
+      <div className={s.wrapper}>
         <Section title="Please leave feedback">
           <FeedbackOptions
             options={stateName}
             onLeaveFeedback={this.handleIncrement}
           />
         </Section>
+
         <Section title="Statistics">
           {value === 0 ? (
             <Notification message="No feedback given" />
